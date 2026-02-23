@@ -1,7 +1,15 @@
+import { useState } from "react";
+import Header from "./components/Header/Header";
+
 function App() {
+  const [activeCategory, setActiveCategory] = useState("bags");
+
   return (
     <>
-      <h1>E-commerce task</h1>
+      <Header
+        activeCategory={activeCategory}
+        onCategoryChange={setActiveCategory}
+      />
     </>
   );
 }
