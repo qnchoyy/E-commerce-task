@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Header from "./components/Header/Header";
 import CategoryBanner from "./components/CategoryBanner/CategoryBanner";
-import { categories } from "./data/products";
+import { categories, products } from "./data/products";
+import ProductCard from "./components/ProductCard/ProductCard";
 
 function App() {
   const [activeCategory, setActiveCategory] = useState("bags");
@@ -18,6 +19,7 @@ function App() {
         name={currentCategory.name}
         description={currentCategory.description}
       />
+      <ProductCard product={products[0]} />
     </>
   );
 }
