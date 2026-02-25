@@ -5,16 +5,27 @@ import { categories, products } from "./data/products";
 import ProductGrid from "./components/ProductGrid/ProductGrid";
 import { PRODUCTS_PER_PAGE } from "./constants/constants";
 import styles from "./App.module.css";
+import SortDropdown from "./components/SortDropdown/SortDropdown";
+import { getFinalPrice } from "./utils/helpers";
 
 function App() {
   const [activeCategory, setActiveCategory] = useState("bags");
   const [visibleCount, setVisibleCount] = useState(PRODUCTS_PER_PAGE);
+  const [sortBy, setSortBy] = useState("default");
 
   const currentCategory = categories.find((c) => c.id === activeCategory)!;
   const filteredProducts = products.filter(
     (p) => p.categoryId === activeCategory,
   );
-  const visibleProducts = filteredProducts.slice(0, visibleCount);
+  const sortedProducts = [...filteredProducts].sort((a, b) => {
+    if (sortBy === "name-asc") return a.name.localeCompare(b.name);
+    if (sortBy === "name-desc") return b.name.localeCompare(a.name);
+    if (sortBy === "price-asc") return getFinalPrice(a) - getFinalPrice(b);
+    if (sortBy === "price-desc") return getFinalPrice(b) - getFinalPrice(a);
+    return 0;
+  });
+
+  const visibleProducts = sortedProducts.slice(0, visibleCount);
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + PRODUCTS_PER_PAGE);
@@ -37,6 +48,7 @@ function App() {
         shownProducts={visibleProducts.length}
         totalCount={filteredProducts.length}
       />
+      <SortDropdown sortBy={sortBy} onSortChange={setSortBy} />
       <ProductGrid products={visibleProducts} />
       {visibleCount < filteredProducts.length && (
         <div className={styles.loadMoreWrapper}>
