@@ -34,6 +34,8 @@ function App() {
       <CategoryBanner
         name={currentCategory.name}
         description={currentCategory.description}
+        shownProducts={visibleProducts.length}
+        totalCount={filteredProducts.length}
       />
       <ProductGrid products={visibleProducts} />
       {visibleCount < filteredProducts.length && (
