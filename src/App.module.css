@@ -1,0 +1,20 @@
+.loadMoreWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 32px 0;
+}
+
+.loadMoreBtn {
+  padding: 12px 48px;
+  background: #1a1a1a;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.loadMoreBtn:hover {
+  background: #333;
+}

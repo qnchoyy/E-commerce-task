@@ -131,6 +131,52 @@ export const products: Product[] = [
       "https://images.unsplash.com/photo-1581605405669-fcdf81165afa?w=400&q=80",
   },
   {
+    id: 25,
+    categoryId: "bags",
+    name: "Bucket Bag",
+    description: "Casual bucket bag with drawstring closure.",
+    price: 85,
+    rating: 4.3,
+    color: "black",
+    image:
+      "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=400&q=80",
+  },
+  {
+    id: 26,
+    categoryId: "bags",
+    name: "Crossbody Chain Bag",
+    description: "Elegant chain crossbody bag for evenings.",
+    price: 110,
+    discountedPrice: 89,
+    rating: 4.6,
+    color: "brown",
+    image:
+      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80",
+  },
+  {
+    id: 27,
+    categoryId: "bags",
+    name: "Woven Tote",
+    description: "Handwoven tote perfect for summer days.",
+    price: 60,
+    rating: 4.1,
+    color: "beige",
+    image:
+      "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=400&q=80",
+  },
+  {
+    id: 28,
+    categoryId: "bags",
+    name: "Mini Backpack",
+    description: "Compact mini backpack for everyday essentials.",
+    price: 70,
+    discountedPrice: 55,
+    rating: 4.4,
+    color: "black",
+    image:
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80",
+  },
+  {
     id: 9,
     categoryId: "shoes",
     name: "White Leather Sneakers",
@@ -222,6 +268,52 @@ export const products: Product[] = [
       "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=400&q=80",
   },
   {
+    id: 29,
+    categoryId: "shoes",
+    name: "Platform Sandals",
+    description: "Bold platform sandals for a statement look.",
+    price: 95,
+    discountedPrice: 75,
+    rating: 4.3,
+    color: "black",
+    image:
+      "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&q=80",
+  },
+  {
+    id: 30,
+    categoryId: "shoes",
+    name: "Pointed Toe Heels",
+    description: "Classic pointed toe heels for formal occasions.",
+    price: 140,
+    rating: 4.5,
+    color: "beige",
+    image:
+      "https://images.unsplash.com/photo-1596703263926-eb0762ee17e4?w=400&q=80",
+  },
+  {
+    id: 31,
+    categoryId: "shoes",
+    name: "Canvas Sneakers",
+    description: "Lightweight canvas sneakers for casual wear.",
+    price: 65,
+    discountedPrice: 49,
+    rating: 4.2,
+    color: "white",
+    image:
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80",
+  },
+  {
+    id: 32,
+    categoryId: "shoes",
+    name: "Suede Loafers",
+    description: "Comfortable suede loafers with rubber sole.",
+    price: 115,
+    rating: 4.4,
+    color: "brown",
+    image:
+      "https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=400&q=80",
+  },
+  {
     id: 17,
     categoryId: "accessories",
     name: "Silk Scarf",
@@ -311,5 +403,51 @@ export const products: Product[] = [
     color: "black",
     image:
       "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&q=80",
+  },
+  {
+    id: 33,
+    categoryId: "accessories",
+    name: "Leather Wallet",
+    description: "Slim leather wallet with card slots.",
+    price: 45,
+    rating: 4.5,
+    color: "brown",
+    image:
+      "https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=400&q=80",
+  },
+  {
+    id: 34,
+    categoryId: "accessories",
+    name: "Pearl Earrings",
+    description: "Elegant freshwater pearl drop earrings.",
+    price: 55,
+    discountedPrice: 40,
+    rating: 4.6,
+    color: "white",
+    image:
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&q=80",
+  },
+  {
+    id: 35,
+    categoryId: "accessories",
+    name: "Knit Headband",
+    description: "Soft knit headband for cold weather.",
+    price: 25,
+    rating: 4.2,
+    color: "beige",
+    image:
+      "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=400&q=80",
+  },
+  {
+    id: 36,
+    categoryId: "accessories",
+    name: "Sunglasses Case",
+    description: "Hard shell sunglasses case with magnetic closure.",
+    price: 30,
+    discountedPrice: 22,
+    rating: 4.0,
+    color: "black",
+    image:
+      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&q=80",
   },
 ];
