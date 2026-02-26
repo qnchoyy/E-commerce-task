@@ -5,6 +5,13 @@
   padding: 24px;
 }
 
+.noResults {
+  font-size: 14px;
+  color: #666;
+  padding: 48px 24px;
+  text-align: center;
+}
+
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);

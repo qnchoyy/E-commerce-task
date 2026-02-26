@@ -7,6 +7,9 @@ interface ProductGridProps {
 }
 
 const ProductGrid = ({ products }: ProductGridProps) => {
+  if (products.length === 0) {
+    return <p className={styles.noResults}>No products found.</p>;
+  }
   return (
     <div className={styles.grid}>
       {products.map((product) => (
