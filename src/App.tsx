@@ -7,17 +7,28 @@ import { PRODUCTS_PER_PAGE } from "./constants/constants";
 import styles from "./App.module.css";
 import SortDropdown from "./components/SortDropdown/SortDropdown";
 import { getFinalPrice } from "./utils/helpers";
+import FilterPanel from "./components/FilterPanel/FilterPanel";
 
 function App() {
   const [activeCategory, setActiveCategory] = useState("bags");
   const [visibleCount, setVisibleCount] = useState(PRODUCTS_PER_PAGE);
   const [sortBy, setSortBy] = useState("default");
+  const [selectedColors, setSelectedColors] = useState<string[]>([]);
+  const [maxPrice, setMaxPrice] = useState(300);
 
   const currentCategory = categories.find((c) => c.id === activeCategory)!;
   const filteredProducts = products.filter(
     (p) => p.categoryId === activeCategory,
   );
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
+
+  const colorAndPriceFiltered = filteredProducts.filter((p) => {
+    const colorMatch =
+      selectedColors.length === 0 || selectedColors.includes(p.color);
+    const priceMatch = getFinalPrice(p) <= maxPrice;
+    return colorMatch && priceMatch;
+  });
+
+  const sortedProducts = [...colorAndPriceFiltered].sort((a, b) => {
     if (sortBy === "name-asc") return a.name.localeCompare(b.name);
     if (sortBy === "name-desc") return b.name.localeCompare(a.name);
     if (sortBy === "price-asc") return getFinalPrice(a) - getFinalPrice(b);
@@ -34,7 +45,17 @@ function App() {
   const handleCategoryChange = (categoryId: string) => {
     setActiveCategory(categoryId);
     setVisibleCount(PRODUCTS_PER_PAGE);
+    setMaxPrice(300);
+    setSelectedColors([]);
   };
+
+  const handleColorChange = (color: string) => {
+    setSelectedColors((prev) =>
+      prev.includes(color) ? prev.filter((c) => c !== color) : [...prev, color],
+    );
+  };
+
+  const availableColors = [...new Set(filteredProducts.map((p) => p.color))];
 
   return (
     <>
@@ -46,17 +67,28 @@ function App() {
         name={currentCategory.name}
         description={currentCategory.description}
         shownProducts={visibleProducts.length}
-        totalCount={filteredProducts.length}
+        totalCount={colorAndPriceFiltered.length}
       />
-      <SortDropdown sortBy={sortBy} onSortChange={setSortBy} />
-      <ProductGrid products={visibleProducts} />
-      {visibleCount < filteredProducts.length && (
-        <div className={styles.loadMoreWrapper}>
-          <button className={styles.loadMoreBtn} onClick={handleLoadMore}>
-            Load More
-          </button>
+      <div className={styles.mainLayout}>
+        <FilterPanel
+          availableColors={availableColors}
+          selectedColors={selectedColors}
+          maxPrice={maxPrice}
+          onColorChange={handleColorChange}
+          onPriceChange={setMaxPrice}
+        />
+        <div className={styles.content}>
+          <SortDropdown sortBy={sortBy} onSortChange={setSortBy} />
+          <ProductGrid products={visibleProducts} />
+          {visibleCount < colorAndPriceFiltered.length && (
+            <div className={styles.loadMoreWrapper}>
+              <button className={styles.loadMoreBtn} onClick={handleLoadMore}>
+                Load More
+              </button>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </>
   );
 }

@@ -18,3 +18,13 @@
 .loadMoreBtn:hover {
   background: #333;
 }
+
+.mainLayout {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+}
+
+.content {
+  flex: 1;
+}

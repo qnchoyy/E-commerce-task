@@ -1,0 +1,47 @@
+.panel {
+  width: 220px;
+  min-width: 220px;
+  padding: 24px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #1a1a1a;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.colorLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.slider {
+  width: 100%;
+  accent-color: #1a1a1a;
+}
+
+.priceValue {
+  font-size: 13px;
+  color: #666;
+  margin-top: 8px;
+}
