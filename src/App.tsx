@@ -6,7 +6,7 @@ import ProductGrid from "./components/ProductGrid/ProductGrid";
 import { PRODUCTS_PER_PAGE } from "./constants/constants";
 import styles from "./App.module.css";
 import SortDropdown from "./components/SortDropdown/SortDropdown";
-import { getFinalPrice } from "./utils/helpers";
+import { getFinalPrice, getMaxPriceForCategory } from "./utils/helpers";
 import FilterPanel from "./components/FilterPanel/FilterPanel";
 import Footer from "./components/Footer/Footer";
 import { Toaster } from "react-hot-toast";
@@ -16,12 +16,19 @@ function App() {
   const [visibleCount, setVisibleCount] = useState(PRODUCTS_PER_PAGE);
   const [sortBy, setSortBy] = useState("default");
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
-  const [maxPrice, setMaxPrice] = useState(300);
+  const [maxPrice, setMaxPrice] = useState(() =>
+    getMaxPriceForCategory(products, "bags"),
+  );
 
   const currentCategory = categories.find((c) => c.id === activeCategory)!;
+
   const filteredProducts = products.filter(
     (p) => p.categoryId === activeCategory,
   );
+
+  const categoryMaxPrice = getMaxPriceForCategory(products, activeCategory);
+
+  const availableColors = [...new Set(filteredProducts.map((p) => p.color))];
 
   const colorAndPriceFiltered = filteredProducts.filter((p) => {
     const colorMatch =
@@ -40,15 +47,15 @@ function App() {
 
   const visibleProducts = sortedProducts.slice(0, visibleCount);
 
-  const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + PRODUCTS_PER_PAGE);
-  };
-
   const handleCategoryChange = (categoryId: string) => {
     setActiveCategory(categoryId);
     setVisibleCount(PRODUCTS_PER_PAGE);
-    setMaxPrice(300);
+    setMaxPrice(getMaxPriceForCategory(products, categoryId));
     setSelectedColors([]);
+  };
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + PRODUCTS_PER_PAGE);
   };
 
   const handleColorChange = (color: string) => {
@@ -56,8 +63,6 @@ function App() {
       prev.includes(color) ? prev.filter((c) => c !== color) : [...prev, color],
     );
   };
-
-  const availableColors = [...new Set(filteredProducts.map((p) => p.color))];
 
   return (
     <>
@@ -77,6 +82,7 @@ function App() {
           availableColors={availableColors}
           selectedColors={selectedColors}
           maxPrice={maxPrice}
+          maxPriceLimit={categoryMaxPrice}
           onColorChange={handleColorChange}
           onPriceChange={setMaxPrice}
         />

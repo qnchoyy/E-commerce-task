@@ -4,6 +4,7 @@ interface FilterPanelProps {
   availableColors: string[];
   selectedColors: string[];
   maxPrice: number;
+  maxPriceLimit: number;
   onColorChange: (color: string) => void;
   onPriceChange: (price: number) => void;
 }
@@ -12,6 +13,7 @@ const FilterPanel = ({
   availableColors,
   selectedColors,
   maxPrice,
+  maxPriceLimit,
   onColorChange,
   onPriceChange,
 }: FilterPanelProps) => {
@@ -38,7 +40,7 @@ const FilterPanel = ({
         <input
           type="range"
           min={0}
-          max={300}
+          max={maxPriceLimit}
           value={maxPrice}
           onChange={(e) => onPriceChange(Number(e.target.value))}
           className={styles.slider}

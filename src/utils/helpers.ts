@@ -8,3 +8,11 @@ export const renderStars = (rating: number): boolean[] => {
 export const getFinalPrice = (product: Product): number => {
   return product.discountedPrice ?? product.price;
 };
+
+export const getMaxPriceForCategory = (
+  products: Product[],
+  categoryId: string,
+): number =>
+  Math.max(
+    ...products.filter((p) => p.categoryId === categoryId).map((p) => p.price),
+  );
