@@ -9,7 +9,7 @@ interface HeaderProps {
 const Header = ({ activeCategory, onCategoryChange }: HeaderProps) => {
   return (
     <header className={styles.header}>
-      <div className={styles.header}>MyShop</div>
+      <div className={styles.logo}>MyShop</div>
       <nav className={styles.nav}>
         {categories.map((category) => (
           <button
