@@ -1,0 +1,33 @@
+.footer {
+  border-top: 1px solid #e0e0e0;
+  padding: 32px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.links {
+  display: flex;
+  gap: 24px;
+}
+
+.link {
+  font-size: 13px;
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link:visited {
+  color: #1a1a1a;
+}
+
+.copy {
+  font-size: 12px;
+  color: #999;
+}

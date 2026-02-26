@@ -8,6 +8,7 @@ import styles from "./App.module.css";
 import SortDropdown from "./components/SortDropdown/SortDropdown";
 import { getFinalPrice } from "./utils/helpers";
 import FilterPanel from "./components/FilterPanel/FilterPanel";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [activeCategory, setActiveCategory] = useState("bags");
@@ -89,6 +90,7 @@ function App() {
           )}
         </div>
       </div>
+      <Footer />
     </>
   );
 }
