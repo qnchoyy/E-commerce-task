@@ -9,6 +9,7 @@ import SortDropdown from "./components/SortDropdown/SortDropdown";
 import { getFinalPrice } from "./utils/helpers";
 import FilterPanel from "./components/FilterPanel/FilterPanel";
 import Footer from "./components/Footer/Footer";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [activeCategory, setActiveCategory] = useState("bags");
@@ -60,6 +61,7 @@ function App() {
 
   return (
     <>
+      <Toaster position="top-right" />
       <Header
         activeCategory={activeCategory}
         onCategoryChange={handleCategoryChange}

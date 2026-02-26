@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import type { Product } from "../../data/products";
 import { renderStars } from "../../utils/helpers";
 import styles from "./ProductCard.module.css";
@@ -39,7 +40,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       </div>
       <button
         className={styles.addToCart}
-        onClick={() => console.log(`${product.name} added to cart!`)}
+        onClick={() => toast.success(`${product.name} added to cart!`)}
       >
         Add to Cart
       </button>
